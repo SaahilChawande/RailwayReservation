@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 21, 2018 at 02:33 PM
+-- Generation Time: Mar 21, 2018 at 02:51 PM
 -- Server version: 5.7.21-0ubuntu0.16.04.1
 -- PHP Version: 7.0.28-0ubuntu0.16.04.1
 
@@ -19,6 +19,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `railway_reservation`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `d_payments2`
+--
+
+CREATE TABLE `d_payments2` (
+  `user_id` varchar(255) NOT NULL,
+  `passenger_id` int(11) DEFAULT '0',
+  `price` int(11) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `email_id` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `age` int(11) NOT NULL,
+  `mobile` int(10) NOT NULL,
+  `city` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `d_payments2`
+--
+
+INSERT INTO `d_payments2` (`user_id`, `passenger_id`, `price`, `type`, `email_id`, `password`, `first_name`, `last_name`, `gender`, `age`, `mobile`, `city`) VALUES
+('pankaj.ajwani@gmail.com', 4, 1700, 'Sleeper', 'pankaj.ajwani@gmail.com', 'password', 'Pankaj', 'Ajwani', 'M', 20, 987654444, 'Delhi'),
+('saail.chawande@gmail.com', 3, 1500, 'Two Tier', 'saail.chawande@gmail.com', 'password', 'Saahil', 'Chawande', 'F', 20, 987654333, 'Delhi');
 
 -- --------------------------------------------------------
 
@@ -59,6 +88,17 @@ CREATE TABLE `passenger` (
   `gender` varchar(10) NOT NULL,
   `booked_by` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `passenger`
+--
+
+INSERT INTO `passenger` (`pnr`, `first_name`, `last_name`, `age`, `gender`, `booked_by`) VALUES
+(1, 'Aaron', 'Blaze', 35, 'M', 'aaron.blaze@gmail.com'),
+(2, 'Kratos', 'Warheart', 30, 'M', 'kratos.warheart@gmail.com'),
+(3, 'Saahil', 'Chawande', 20, 'F', 'saail.chawande@gmail.com'),
+(4, 'Pankaj', 'Ajwani', 20, 'M', 'pankaj.ajwani@gmail.com'),
+(5, 'Rakshit', 'Bhat', 20, 'M', 'rakshit.bhat@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -170,6 +210,19 @@ INSERT INTO `user` (`email_id`, `password`, `first_name`, `last_name`, `gender`,
 --
 
 --
+-- Indexes for table `d_payments2`
+--
+ALTER TABLE `d_payments2`
+  ADD PRIMARY KEY (`user_id`,`email_id`);
+
+--
+-- Indexes for table `h_user2`
+--
+ALTER TABLE `h_user2`
+  ADD PRIMARY KEY (`email_id`),
+  ADD KEY `email_id` (`email_id`);
+
+--
 -- Indexes for table `passenger`
 --
 ALTER TABLE `passenger`
@@ -239,7 +292,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `passenger`
 --
 ALTER TABLE `passenger`
-  MODIFY `pnr` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pnr` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `payments`
 --
